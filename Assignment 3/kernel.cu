@@ -6,8 +6,6 @@
 
 // M x K x N
 
-__device__ unsigned int min(int a, int b) { return a < b ? a : b; }
-
 __global__ void mm_tiled_kernel(float* A, float* B, float* C, unsigned int M, unsigned int N, unsigned int K) {
 
     __shared__ float A_tile[TILE_DIM][TILE_DIM];
