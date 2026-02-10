@@ -1,0 +1,23 @@
+
+(1) The default parameters in this assignment perform a convolution on a
+    4096x4096 input using a 5x5 filter and a 32x32 input tile.
+
+    (a) What are the dimensions of the output tile?
+
+        
+
+    (b) What is the total number of ghost cells for the entire input?
+
+        
+
+(2) Assume we used a rectangular 5x7 filter instead. The convolution is still
+    performed on a 4096x4096 input using a 32x32 input tile.
+
+    (a) What are the dimensions of the output tile?
+
+        
+
+    (b) What is the total number of ghost cells for the entire input?
+
+        
+

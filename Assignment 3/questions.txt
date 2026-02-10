@@ -7,22 +7,27 @@
     (a) The kernel implemented in the previous assignment (without shared memory
         tiling)
 
+    OPS = number of new elements x operations per elements 
+        = rows x columns x (products + sums)
+        = 256 x 256 x (256 + 256)
+        = 33554432
 
+    B   = (size of A + size of B) x times each element is read + number of elements written onto c
+        = (256 x 256 + 256 x 256) x 256 + 256 x 256
+        = 33619968
 
-
-
-
-
-
-
+    OPS/B = 0.998
 
     (b) The kernel implemented in this assignment (with shared memory tiling)
 
+    OPS = 33488896 (same logic as before)
 
+    B   = (size of A + size of B) x times each element is read + number of elements written onto c
+        = (size of A + size of B) x tiles of C that access the tile containing each element + number of elements written onto c
+        = (256 x 256 + 256 x 256) x (2 x 256 / 32 - 1) + 256 x 256
+        = 2031616
 
-
-
-
+    OPS/B = 16.48387
 
 
 
@@ -41,21 +46,21 @@
     in this assignment. Show your work.
 
     (a) Is occupancy limited by the max blocks/SM?
-
-
+    
+    No, occupancy is related to the max number of threads possible, it doesn't how they're divided into blocks and how many blocks there are.
 
 
 
 
     (b) Is occupancy limited by the max shared-memory/SM?
 
-
+    No, all threads will use the same shared memory so using extra threads will not require extra shared memory.
 
 
 
 
     (c) Is occupancy limited by the max registers/SM?
-
+    Yes, each thread needs its own registers, so the less there are registers, the less threads we can create.
 
 
 
