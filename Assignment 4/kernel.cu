@@ -24,7 +24,7 @@ __global__ void convolution_tiled_kernel(float* input, float* output, unsigned i
         input_tile[relativeRow][relativeCol] = 0;
     __syncthreads();
     // middle OUT_TILE_DIM x OUT_TILE_DIM square does computations
-    if(relativeRow >= FILTER_RADIUS && relativeRow < IN_TILE_DIM - FILTER_RADIUS && && relativeCol >= FILTER_RADIUS && relativeCol < IN_TILE_DIM - FILTER_RADIUS && inside) {
+    if(relativeRow >= FILTER_RADIUS && relativeRow < IN_TILE_DIM - FILTER_RADIUS && relativeCol >= FILTER_RADIUS && relativeCol < IN_TILE_DIM - FILTER_RADIUS && inside) {
         float sum = 0.0;
         for(int i = 0; i < FILTER_DIM; ++i)
             for(int j = 0; j < FILTER_DIM; ++j)
