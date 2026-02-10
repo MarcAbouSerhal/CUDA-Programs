@@ -44,5 +44,5 @@ void copyFilterToGPU(float filter[][FILTER_DIM]) {
 void convolution_tiled_gpu(float* input_d, float* output_d, unsigned int width, unsigned int height) {
     dim3 numThreadsPerBlock(IN_TILE_DIM, IN_TILE_DIM);
     dim3 numBlocks((height + OUT_TILE_DIM - 1) / OUT_TILE_DIM, (width + OUT_TILE_DIM - 1) / OUT_TILE_DIM);
-    convolution <<< numBlocks, numThreadsPerBlock(input_d, output_d, width, height);
+    convolution <<< numBlocks, numThreadsPerBlock >>> (input_d, output_d, width, height);
 }
