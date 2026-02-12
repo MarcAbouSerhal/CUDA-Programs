@@ -11,10 +11,10 @@ __global__ void convolution_tiled_kernel(float* input, float* output, unsigned i
     
     __shared__ float input_tile[IN_TILE_DIM][IN_TILE_DIM];
 
-    int blockRow = blockIdx.x;
-    int blockCol = blockIdx.y;
-    int relativeRow = threadIdx.x;
-    int relativeCol = threadIdx.y;
+    int blockRow = blockIdx.y;
+    int blockCol = blockIdx.x;
+    int relativeRow = threadIdx.y;
+    int relativeCol = threadIdx.x;
     int row = blockRow * OUT_TILE_DIM + relativeRow - FILTER_RADIUS;
     int col = blockCol * OUT_TILE_DIM + relativeCol - FILTER_RADIUS;
     bool inside = row >= 0 && row < height && col >= 0 && col < width;
@@ -43,6 +43,6 @@ void copyFilterToGPU(float filter[][FILTER_DIM]) {
 
 void convolution_tiled_gpu(float* input_d, float* output_d, unsigned int width, unsigned int height) {
     dim3 numThreadsPerBlock(IN_TILE_DIM, IN_TILE_DIM);
-    dim3 numBlocks((height + OUT_TILE_DIM - 1) / OUT_TILE_DIM, (width + OUT_TILE_DIM - 1) / OUT_TILE_DIM);
+    dim3 numBlocks((width + OUT_TILE_DIM - 1) / OUT_TILE_DIM, (height + OUT_TILE_DIM - 1) / OUT_TILE_DIM);
     convolution_tiled_kernel <<< numBlocks, numThreadsPerBlock >>> (input_d, output_d, width, height);
 }
