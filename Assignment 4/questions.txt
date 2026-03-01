@@ -4,9 +4,14 @@
 
     (a) What are the dimensions of the output tile?
 
+    32 + 5 - 1 = 36. So the dimensions of the output tile are 36 x 36
+
         
 
     (b) What is the total number of ghost cells for the entire input?
+
+    4096 + 5 - 1 = 4100. So the dimensions of the halo of the entire input matrix is 4100 x 4100
+    The number of ghost cells is 4100 x 4100 - 4096 x 4096 = 32784
 
         
 
@@ -15,9 +20,15 @@
 
     (a) What are the dimensions of the output tile?
 
+    height = 32 + 5 - 1 = 36
+    width = 32 + 7 - 1 = 38
+    So the dimensions of the output tile are 36 x 38
         
 
     (b) What is the total number of ghost cells for the entire input?
 
-        
+    height = 4096 + 5 - 1 = 4100
+    width = 4096 + 7 - 1 = 4102
+    So the dimensions of the halo of the entire input matrix is 4100 x 4102
+    The number of ghost cells is 4100 x 4102 - 4096 x 4096 = 40984
 
