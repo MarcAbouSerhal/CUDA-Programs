@@ -4,7 +4,7 @@
 
 #include <cuda/atomic>
 
-#define COARSENING_FACTOR 32
+#define COARSENING_FACTOR 64
 
 __global__ void histogram_private_kernel(unsigned char* image, unsigned int* bins, unsigned int width, unsigned int height) {
     __shared__ unsigned int bins_s[NUM_BINS];
