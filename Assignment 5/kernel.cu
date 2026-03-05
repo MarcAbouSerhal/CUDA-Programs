@@ -93,7 +93,7 @@ void histogram_gpu_private_coarse(unsigned char* image_d, unsigned int* bins_d, 
 
     int numThreadsPerBlock = 512;
     int numBlocks = (width * height + numThreadsPerBlock * COARSENING_FACTOR - 1) / (numThreadsPerBlock * COARSENING_FACTOR);
-    histogram_private_kernel <<< numBlocks, numThreadsPerBlock >>> (image_d, bins_d, width, height);
+    histogram_private_coarse_kernel <<< numBlocks, numThreadsPerBlock >>> (image_d, bins_d, width, height);
 
 }
 
