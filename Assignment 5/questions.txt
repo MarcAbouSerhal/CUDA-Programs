@@ -34,17 +34,18 @@ per block.
     (a) The unoptimized kernel with no privatization in shared memory or thread
         coarsening.
 
-        0.29%
+        0.28%
         
 
     (b) The kernel with privatization in shared memory but without thread
         coarsening.
 
-        6.88%
+        6.75%
 
     (c) The kernel with both privatization in shared memory and thread
         coarsening with a coarsening factor of 64.
 
+        52.20%
         
 
 

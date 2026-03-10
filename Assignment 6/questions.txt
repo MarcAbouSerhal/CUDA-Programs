@@ -1,0 +1,12 @@
+
+Consider the reduction operation you are asked to implement in this assignment.
+Assume a thread block has 1024 threads and reduces 2048 input elements.
+
+(1) How many steps does a single thread block need to reduce its elements?
+
+    
+
+(2) During how many of these steps is only a single warp active?
+
+    
+
