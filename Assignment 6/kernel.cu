@@ -44,8 +44,7 @@ __global__ void reduce_kernel(float* input, float* sum, unsigned int N) {
         val = warpSum[laneIndex];
         val = warpShuffle(laneIndex, val);
         if(localIndex == BLOCK_DIM - 1) {
-            cuda::atomic_ref<float, cuda::thread_scope_device> sum_ref(*sum);
-            sum_ref.fetch_add(val, cuda::memory_order_relaxed);
+            atomicAdd(sum, val);
         }
     }
 }
