@@ -1,6 +1,6 @@
 
 NVCC        = nvcc
-NVCC_FLAGS  = -O3 -arch=sm_70 -std=c++17
+NVCC_FLAGS  = -O3 -arch=sm_70 -std=c++1
 OBJ         = main.o kernel.o
 EXE         = reduction
 
