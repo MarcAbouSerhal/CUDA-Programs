@@ -4,9 +4,15 @@ Assume a thread block has 1024 threads and reduces 2048 input elements.
 
 (1) How many steps does a single thread block need to reduce its elements?
 
-    
+    1. A thread reads two elements from the input. 
+    2. Every warp does a warp shuffle to find the sum within its set of elements
+    3. The last thread of each warp writes its value onto shared memory
+    4. The final warp does a warp shuffle to find the sum of all the input elements
+    5. the final thread atomically adds the sum of all the input elements to the global sum variable
 
 (2) During how many of these steps is only a single warp active?
+
+    During the last 2 steps.
 
     
 
