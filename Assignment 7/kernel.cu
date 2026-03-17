@@ -14,13 +14,13 @@ __global__ void scan_kernel(float* input, float* output, unsigned int N) {
         buffer[2 * threadIndex] = input[segmentStart + 2 * threadIndex];
     }
     else {
-        buffer[2 * threadIndex] = 0;
+        buffer[2 * threadIndex] = 0.0f;
     }
     if(segmentStart + 2 * threadIndex + 1 < N) {
         buffer[2 * threadIndex + 1] = input[segmentStart + 2 * threadIndex + 1];
     }
     else {
-        buffer[2 * threadIndex + 1] = 0;
+        buffer[2 * threadIndex + 1] = 0.0f;
     }
     __syncthreads();
 
@@ -36,7 +36,7 @@ __global__ void scan_kernel(float* input, float* output, unsigned int N) {
 
     // Setting last value to 0
     if(threadIndex == 0) {
-        buffer[BLOCK_DIM * 2 - 1] = 0;
+        buffer[BLOCK_DIM * 2 - 1] = 0.0f;
     }
     __syncthreads();
 
